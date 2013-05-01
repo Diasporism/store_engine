@@ -28,6 +28,11 @@ module StoreEngine
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
 
+
+    if Rails.env == "production"
+      config.middleware.use("Rack::GoogleAnalytics", :web_property_id => "UA-40585002-1")
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
